@@ -12,8 +12,8 @@ ENV DJANGO_SETTINGS_MODULE=config.settings
  
 RUN python manage.py collectstatic --noinput
 
-# ARG DB_URL
-# ENV DB_URL=${DB_URL}
+ARG DB_URL
+ENV DB_URL=${DB_URL}
  
 RUN python manage.py migrate --noinput
  
