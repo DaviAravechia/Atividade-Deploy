@@ -8,12 +8,12 @@ RUN pip install -r requirements.txt
  
 COPY . .
  
-ENV DJANGO_SETTINGS_MODULE=atividade_de_integracao.settings
+ENV DJANGO_SETTINGS_MODULE=Atividade-Deploy.settings
  
 RUN python manage.py collectstatic --noinput
 
-ARG DB_URL
-ENV DB_URL=${DB_URL}
+# ARG DB_URL
+# ENV DB_URL=${DB_URL}
  
 RUN python manage.py mograte --noinput
  
