@@ -11,6 +11,9 @@ COPY . .
 ENV DJANGO_SETTINGS_MODULE=atividade_de_integracao.settings
  
 RUN python manage.py collectstatic --noinput
+
+ARG DB_URL
+ENV DB_URL=${DB_URL}
  
 RUN python manage.py mograte --noinput
  
