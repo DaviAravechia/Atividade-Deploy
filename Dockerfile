@@ -8,12 +8,15 @@ RUN pip install -r requirements.txt
  
 COPY . .
  
-ENV DJANGO_SETTINGS_MODULE=atividade_de_integracao.settings
+ENV DJANGO_SETTINGS_MODULE=config.settings
  
 RUN python manage.py collectstatic --noinput
+
+ARG DB_URL
+ENV DB_URL=${DB_URL}
  
-RUN python manage.py mograte --noinput
+RUN python manage.py migrate --noinput
  
 EXPOSE 8000
  
-CMD ["gunicon","--bind","0.0.0.0:8000","atividade_de_integracao:application"]
+CMD ["gunicorn","--bind","0.0.0.0:8000","config.wsgi:application"]

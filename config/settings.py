@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-93vpcz-5bv&%!%@(&@&1z$e3$c2i%7e$_@8d^47o6dn3i+c9o&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -84,9 +84,9 @@ import os
 
 DB_URL = config('DB_URL', default=os.environ.get('DB_URL', None))
 DATABASES = {
-    'default': { dj_database_url.config(
+    'default': dj_database_url.config(
         default=DB_URL,
-    ) }
+    ) 
 }
 
 
@@ -131,6 +131,6 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ORIGIN_ALLOW = "https://localhost:5173"
+CORS_ALLOWED_ORIGINS = ["https://localhost:5173"]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
